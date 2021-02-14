@@ -4,11 +4,13 @@ import java.util.ArrayList;
 
 public class Categories {
     private String categoryName;
-    private ArrayList<ToDoItem> n;
+    private ArrayList<ToDoItem> toDoItemList;
+    private ArrayList<ToDoItem> completeItemList;
 
     public Categories(String name) {
         this.categoryName = name;
-        this.n = new ArrayList<ToDoItem>();
+        this.toDoItemList = new ArrayList<ToDoItem>();
+        this.completeItemList = new ArrayList<ToDoItem>();
     }
 
     //Getters:
@@ -20,13 +22,32 @@ public class Categories {
     //EFFECTS: add ToDoItem into category
     //MODIFIES: this
     public void addToDoItemInCategory(ToDoItem tdn) {
-        n.add(tdn);
+        toDoItemList.add(tdn);
+    }
+
+    public void removeToDo(ToDoItem t) {
+        if (t.getStatus() == "completed") {
+            toDoItemList.remove(t);
+            completeItemList.add(t);
+        }
+    }
+
+    public void deleteToDo(ToDoItem t) {
+        if(toDoItemList.contains(t)) {
+        toDoItemList.remove(t);
     }
 
     //EFFECTS: Change name of category
     //MODIFIES: this
+        public void changeName(String s) {
+            this.categoryName = s;
+        }
 
-    public void changeCategoryName(String name) {
-        this.categoryName = name;
+    //EFFECT: print out ToDoItem(s) in Category
+
+    public void printCategory(ArrayList<ToDoItem> n) {
+        for (int i = 0; i < n.size(); i++) {
+            System.out.println(n.get(i).getName() + "-" + n.get(i).getDate());
+        }
     }
 }

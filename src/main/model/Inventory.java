@@ -7,33 +7,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Inventory {
-    private ArrayList<ArrayList<ToDoItem>> currentToDoItem;
-
+    private ArrayList<Categories> currentToDoItem;
 
 
     // Constructor
-//EFFECTS Creates a list for ToDoItem sorted in completed and not-compeleted lists
+   //EFFECTS Creates a list for ToDoItem sorted in completed and not-completed lists
     public Inventory() {
-        currentToDoItem = new ArrayList<ToDoItem>();
+        currentToDoItem = new ArrayList<Categories>();
 
     }
 
 
-
-    public ArrayList<ToDoItem> displayCurrentToDoList() {
+    public ArrayList<Categories> displayCurrentToDoList() {
         return currentToDoItem;
     }
 
-
-    public void removeToDo(ToDoItem t) {
-        if (t.getName() == "completed") {
-            currentToDoItem.remove(t);
+    public void printAllCategories(ArrayList<Categories> categories) {
+        for (int i = 0; i < categories.size(); i++) {
+            System.out.print(categories.get(i));
         }
     }
-
-    //EFFECT: Display all categories in list
-    public void displayCategories(){
-        return currentToDoItem;
-    }
 }
-

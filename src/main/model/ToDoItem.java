@@ -19,14 +19,14 @@ public class ToDoItem {
         this.date = "";
     }
 
-    //MODIFIES this
-//EFFECTS Changes status of item to completed
+    //MODIFIES: this
+    //EFFECT: Changes status of item to completed
     public void statusCompleted() {
         this.status = "completed";
     }
 
-    //MODIFIES this
-    //EFFECTS Changes status of item to pending
+    //MODIFIES: this
+    //EFFECT: Changes status of item to pending
     public void statusPending() {
         this.status = "pending";
     }
@@ -39,10 +39,20 @@ public class ToDoItem {
         return itemName;
    }
 
-   //EFFECTS: Rename ToDoItem
+    //EFFECTS: Rename ToDoItem
     // MODIFIES this
 
     public void changeName(String name) {
         this.itemName = name;
+    }
+
+    //EFFECT: Set date in xx/xx/xx format
+    //MODIFIES: this
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getDate() {
+        return this.date;
     }
 }
