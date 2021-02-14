@@ -14,12 +14,6 @@ public class Inventory {
    //EFFECTS Creates a list for ToDoItem sorted in completed and not-completed lists
     public Inventory() {
         currentToDoItem = new ArrayList<Categories>();
-
-    }
-
-
-    public ArrayList<Categories> displayCurrentToDoList() {
-        return currentToDoItem;
     }
 
     public void printAllCategories(ArrayList<Categories> categories) {

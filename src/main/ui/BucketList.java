@@ -1,14 +1,13 @@
 package ui;
 
 import model.Categories;
-import model.Inventory;
 import model.ToDoItem;
 
 import java.util.Scanner;
+
 // Bank teller application
 public class BucketList {
-    private Categories cheq;
-    private Inventory sav;
+    private Categories cat;
     private ToDoItem tdi;
     private Scanner input;
 
@@ -44,11 +43,11 @@ public class BucketList {
     // EFFECTS: processes user command
     private void processCommand(String command) {
         if (command.equals("t")) {
-            doDeposit();
+            addToDo();
         } else if (command.equals("d")) {
-            doWithdrawal();
+            deleteToDo();
         } else if (command.equals("s")) {
-            doTransfer();
+            showAllList();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -57,8 +56,8 @@ public class BucketList {
     // MODIFIES: this
     // EFFECTS: initializes accounts
     private void init() {
-        cheq = new Categories();
-        sav = new ToDoItem();
+        cat = new Categories("");
+        tdi = new ToDoItem("");
         input = new Scanner(System.in);
     }
 
@@ -72,83 +71,38 @@ public class BucketList {
     }
 
     // MODIFIES: this
-    // EFFECTS: conducts a deposit transaction
+    // EFFECTS: adds a ToDoItem into list
     private void addToDo() {
-        System.out.println("Enter name of ToDo");
-        String input = input.next();
-
-        if (amount >= 0.0) {
-            selected.deposit(amount);
-        } else {
-            System.out.println("Cannot deposit negative amount...\n");
-        }
-
-        printBalance(selected);
+        System.out.println("Enter name of ToDo : ");
+        String name = input.next();
+        ToDoItem td = new ToDoItem(name);
+        System.out.println("Set a date : ");
+        String date = input.next();
+        td.setDate(date);
+        cat.addToDoItemInCategory(td);
+        System.out.println("ToDo added successfully");
     }
 
     // MODIFIES: this
     // EFFECTS: conducts a withdraw transaction
-    private void doWithdrawal() {
-        BucketList selected = selectAccount();
-        System.out.print("Enter amount to withdraw: $");
-        double amount = input.nextDouble();
-
-        if (amount < 0.0) {
-            System.out.println("Cannot withdraw negative amount...\n");
-        } else if (selected.getBalance() < amount) {
-            System.out.println("Insufficient balance on account...\n");
+    private void deleteToDo() {
+        System.out.print("Enter name of ToDo : ");
+        String name = input.next();
+        if (cat.searchForToDo(name)) {
+            cat.deleteToDo(name);
+            System.out.println("To do Deleted Successfully!");
         } else {
-            selected.withdraw(amount);
+            System.out.println("Item not found...");
         }
-
-        printBalance(selected);
     }
 
     // MODIFIES: this
-    // EFFECTS: conducts a transfer transaction
-    private void doTransfer() {
-        System.out.println("\nTransfer from?");
-        BucketList source = selectAccount();
-        System.out.println("Transfer to?");
-        BucketList destination = selectAccount();
-
-        System.out.print("Enter amount to transfer: $");
-        double amount = input.nextDouble();
-
-        if (amount < 0.0) {
-            System.out.println("Cannot transfer negative amount...\n");
-        } else if (source.getBalance() < amount) {
-            System.out.println("Insufficient balance on source account...\n");
+    // EFFECTS: shows all ToDoItems in list
+    private void showAllList() {
+        if (!cat.getList().isEmpty()) {
+            cat.printCategory(cat.getList());
         } else {
-            source.withdraw(amount);
-            destination.deposit(amount);
-        }
-
-        System.out.print("Source ");
-        printBalance(source);
-        System.out.print("Destination ");
-        printBalance(destination);
-    }
-
-    // EFFECTS: prompts user to select chequing or savings account and returns it
-    private BucketList selectAccount() {
-        String selection = "";  // force entry into loop
-
-        while (!(selection.equals("c") || selection.equals("s"))) {
-            System.out.println("c for chequing");
-            System.out.println("s for savings");
-            selection = input.next();
-            selection = selection.toLowerCase();
-        }
-
-        if (selection.equals("c")) {
-            return cheq;
-        } else {
-            return sav;
+            System.out.println("No more ToDo's!");
         }
     }
-
-    // EFFECTS: prints balance of account to the screen
-    private void printBalance(BucketList selected) {
-        System.out.printf("Balance: $%.2f\n", selected.getBalance());
-    }
+}

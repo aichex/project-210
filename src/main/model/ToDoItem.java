@@ -19,6 +19,20 @@ public class ToDoItem {
         this.date = "";
     }
 
+    //Getters
+
+    public String getStatus() {
+        return status;
+    }
+
+    public String getName() {
+        return itemName;
+    }
+
+    public String getDate() {
+        return this.date;
+    }
+
     //MODIFIES: this
     //EFFECT: Changes status of item to completed
     public void statusCompleted() {
@@ -31,14 +45,6 @@ public class ToDoItem {
         this.status = "pending";
     }
 
-   public String getStatus() {
-        return status;
-   }
-
-   public String getName() {
-        return itemName;
-   }
-
     //EFFECTS: Rename ToDoItem
     // MODIFIES this
 
@@ -50,9 +56,5 @@ public class ToDoItem {
     //MODIFIES: this
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public String getDate() {
-        return this.date;
     }
 }
