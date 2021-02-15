@@ -6,14 +6,13 @@ public class Categories {
     private String categoryName;
     private ArrayList<ToDoItem> toDoItemList;
 
-
+     //CONSTRUCTOR
     public Categories(String name) {
         this.categoryName = name;
         this.toDoItemList = new ArrayList<ToDoItem>();
     }
 
-    //Getters:
-
+    //GETTERS
     public String getCategoryName() {
         return categoryName;
     }
@@ -29,10 +28,12 @@ public class Categories {
 
     //EFFECTS: add ToDoItem into category
     //MODIFIES: this
+
     public void addToDoItemInCategory(ToDoItem tdn) {
         toDoItemList.add(tdn);
     }
 
+    //EFFECTS: search for ToDoItem in list, if in list, return ToDoItem otherwise return null
     public ToDoItem searchForToDo(String name) {
         for (int i = 0; i < toDoItemList.size(); i++) {
             if (name.equals((toDoItemList.get(i)).getName())) {
@@ -41,6 +42,8 @@ public class Categories {
         }
         return null;
     }
+    //EFFECTS: Searches for item, if item is in ToDoItem List, deleted ToDoItem
+    //MODIFIES: this
 
     public void deleteToDo(String nam) {
         ToDoItem item = this.searchForToDo(nam);
@@ -50,6 +53,7 @@ public class Categories {
 
     //EFFECTS: Change name of category
     //MODIFIES: this
+
     public void changeName(String s) {
         this.categoryName = s;
     }

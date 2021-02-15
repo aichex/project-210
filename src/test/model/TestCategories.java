@@ -55,5 +55,38 @@ public void Setup() {
         assertEquals(testCategory.getListSize(), 0);
     }
 
+    @Test
+    public void testDeleteToDoEmpty() {
+        testCategory.deleteToDo("");
+        assertEquals(testCategory.getListSize(), 0);
+    }
+
+    @Test
+    public void testDeleteToDoMany() {
+        ToDoItem n = new ToDoItem("class");
+        ToDoItem s = new ToDoItem("work");
+        ToDoItem a = new ToDoItem("dinner");
+        testCategory.addToDoItemInCategory(n);
+        testCategory.addToDoItemInCategory(s);
+        testCategory.addToDoItemInCategory(a);
+        testCategory.deleteToDo("dinner");
+        assertEquals(testCategory.getListSize(), 2);
+    }
+
+    @Test
+    public void testDeleteNonExistentCase() {
+        ToDoItem n = new ToDoItem("class");
+        testCategory.addToDoItemInCategory(n);
+        testCategory.deleteToDo("work");
+        assertEquals(testCategory.getListSize(), 1);
+
+    }
+
+    @Test
+    public void testAddToDoItem() {
+        ToDoItem n = new ToDoItem("run");
+        testCategory.addToDoItemInCategory(n);
+        assertEquals(testCategory.getListSize(),1);
+    }
 }
 

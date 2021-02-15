@@ -1,13 +1,10 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class ToDoItem {
     //Fields
     private String itemName;
     private String status;
-    private double cost;
     private String date;
 
 
@@ -15,12 +12,10 @@ public class ToDoItem {
     public ToDoItem(String name) {
         this.itemName = name;
         this.status = "";
-        this.cost = 0;
         this.date = "";
     }
 
     //Getters
-
     public String getStatus() {
         return status;
     }
@@ -39,15 +34,8 @@ public class ToDoItem {
         this.status = "completed";
     }
 
-    //MODIFIES: this
-    //EFFECT: Changes status of item to pending
-    public void statusPending() {
-        this.status = "pending";
-    }
-
     //EFFECTS: Rename ToDoItem
     // MODIFIES this
-
     public void changeName(String name) {
         this.itemName = name;
     }

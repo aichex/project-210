@@ -1,17 +1,14 @@
 package ui;
 
 import model.Categories;
-import model.Inventory;
 import model.ToDoItem;
 
 import java.util.Scanner;
 
 // Bank teller application
 public class BucketList {
-    private Inventory main;
     private Categories comp;
     private Categories pend;
-    private ToDoItem tdi;
     private Scanner input;
 
     // EFFECTS: runs the teller application
@@ -45,7 +42,7 @@ public class BucketList {
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processCommand(String command) {
-        if (command.equals("t")) {
+        if (command.equals("a")) {
             addToDo();
         } else if (command.equals("d")) {
             deleteToDo();
@@ -53,7 +50,7 @@ public class BucketList {
             completeItem();
         } else if (command.equals("s")) {
             showCurrentList();
-        } else if (command.equals("n")) {
+        } else if (command.equals("c")) {
             showCompleteList();
         } else {
             System.out.println("Selection not valid...");
@@ -65,24 +62,24 @@ public class BucketList {
     private void init() {
         comp = new Categories("Completed");
         pend = new Categories("Current");
-        tdi = new ToDoItem("");
         input = new Scanner(System.in);
-        main = new Inventory();
     }
 
     // EFFECTS: displays menu of options to user
     private void displayMenu() {
         System.out.println("\nSelect from:");
-        System.out.println("\tt -> add ToDo");
+        System.out.println("\ta -> add ToDo");
         System.out.println("\td -> delete ToDo");
         System.out.println("\tm -> Mark ToDo as complete");
         System.out.println("\ts -> show Current ToDo");
-        System.out.println("\tn -> show Completed ToDo");
+        System.out.println("\tc -> show Completed ToDo");
         System.out.println("\tq -> quit");
     }
 
+    // CONSTRAINTS: name of ToDoItem can only take one string
     // MODIFIES: this
     // EFFECTS: adds a ToDoItem into list
+
     private void addToDo() {
         System.out.println("Enter name of ToDo : ");
         String name = input.next();
@@ -136,11 +133,9 @@ public class BucketList {
             System.out.println("Item Not Found...");
         } else {
             comp.addToDoItemInCategory(pend.searchForToDo(name));
+            pend.searchForToDo(name).statusCompleted();
             pend.deleteToDo(name);
             System.out.println("Item marked as completed!");
         }
     }
-
-    //MODIFIES: this
-    //EFFECTS: show all Categories in list
 }
