@@ -27,12 +27,6 @@ class TestToDoItem {
         assertEquals(testItem.getStatus(), "completed");
     }
 
-    @Test
-    public void testStatusPending() {
-        testItem.statusPending();
-        assertEquals(testItem.getStatus(), "pending");
-
-    }
 
     @Test
     public void testChangeName() {
