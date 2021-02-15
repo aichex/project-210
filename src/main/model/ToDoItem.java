@@ -7,6 +7,7 @@ public class ToDoItem {
     private String status;
     private String date;
 
+    //TODOItem is a task entry that will have a status- pending/complete name and date in format MM/DD/YY
 
     //Constructor
     public ToDoItem(String name) {

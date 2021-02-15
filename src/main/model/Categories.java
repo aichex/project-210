@@ -6,7 +6,9 @@ public class Categories {
     private String categoryName;
     private ArrayList<ToDoItem> toDoItemList;
 
-     //CONSTRUCTOR
+    // Categories stores ToDoItem in a list, each category can be named
+
+    //CONSTRUCTOR
     public Categories(String name) {
         this.categoryName = name;
         this.toDoItemList = new ArrayList<ToDoItem>();
