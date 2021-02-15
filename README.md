@@ -34,3 +34,13 @@ My girlfriend and I always discuss things we want to do together in the future. 
 local restaurants, travel destinations and experiences we want to experience together. However, these  
 ideas never get written down and slowly but surely, they fade out of our memories. I hope that with this application,  
 I will be able to keep track of all the things we want to do together and plan out each and every one with her. 
+
+## Phase 1: 
+
+### User Stores Implemented:  
+1. User Story: Add a ToDo Item into list  
+CONSTRAINT: Only one string can be taken for the name. 
+2. User Story: Delete a ToDo Item from list by name 
+3. User Story: Show all ToDo Items in list 
+
+

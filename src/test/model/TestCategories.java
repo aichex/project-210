@@ -30,12 +30,12 @@ public void Setup() {
     public void testSearchForToDoItemOnlyOne() {
         ToDoItem s =  new ToDoItem("test");
         testCategory.addToDoItemInCategory(s);
-        assertTrue(testCategory.searchForToDo("test"));
+        assertFalse(testCategory.searchForToDo("test") == null);
     }
 
     @Test
     public void testSearchForToDoItemEmpty() {
-        assertFalse(testCategory.searchForToDo("anything"));
+        assertTrue(testCategory.searchForToDo("anything") == null);
     }
 
     @Test
@@ -44,8 +44,7 @@ public void Setup() {
         testCategory.addToDoItemInCategory(n);
         ToDoItem s = new ToDoItem("test");
         testCategory.addToDoItemInCategory(s);
-        assertTrue(testCategory.searchForToDo("run"));
-
+        assertFalse(testCategory.searchForToDo("test") == null);
     }
 
     @Test

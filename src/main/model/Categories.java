@@ -5,12 +5,11 @@ import java.util.ArrayList;
 public class Categories {
     private String categoryName;
     private ArrayList<ToDoItem> toDoItemList;
-    private ArrayList<ToDoItem> completeItemList;
+
 
     public Categories(String name) {
         this.categoryName = name;
         this.toDoItemList = new ArrayList<ToDoItem>();
-        this.completeItemList = new ArrayList<ToDoItem>();
     }
 
     //Getters:
@@ -34,21 +33,18 @@ public class Categories {
         toDoItemList.add(tdn);
     }
 
-    public boolean searchForToDo(String name) {
+    public ToDoItem searchForToDo(String name) {
         for (int i = 0; i < toDoItemList.size(); i++) {
             if (name.equals((toDoItemList.get(i)).getName())) {
-                return true;
+                return toDoItemList.get(i);
             }
         }
-        return false;
+        return null;
     }
 
     public void deleteToDo(String nam) {
-        for (int i = 0; i < toDoItemList.size(); i++) {
-            if (nam.equals((toDoItemList.get(i).getName()))) {
-                toDoItemList.remove(i);
-            }
-        }
+        ToDoItem item = this.searchForToDo(nam);
+        toDoItemList.remove(item);
     }
 
 
