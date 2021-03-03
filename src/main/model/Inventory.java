@@ -19,12 +19,9 @@ public class Inventory {
         return inv;
     }
 
-    public void addCategory(Categories c) throws AlreadyExists {
-        if (!inv.contains(c)) {
-            inv.add(c);
-        } else {
-            throw new AlreadyExists();
-        }
+    public void addCategory(String name) {
+        Categories c = new Categories(name);
+        inv.add(c);
     }
 
     public Categories searchForCategory(String name) {

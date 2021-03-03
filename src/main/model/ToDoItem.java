@@ -6,6 +6,7 @@ public class ToDoItem {
     private String itemName;
     private String status;
     private String date;
+    private double cost;
 
     //TODOItem is a task entry that will have a status- pending/complete name and date in format MM/DD/YY
 
@@ -14,6 +15,7 @@ public class ToDoItem {
         this.itemName = name;
         this.status = "";
         this.date = "";
+        this.cost = 0.00;
     }
 
     //Getters
@@ -27,6 +29,10 @@ public class ToDoItem {
 
     public String getDate() {
         return this.date;
+    }
+
+    public double getCost() {
+        return this.cost;
     }
 
     //MODIFIES: this
@@ -45,5 +51,11 @@ public class ToDoItem {
     //MODIFIES: this
     public void setDate(String date) {
         this.date = date;
+    }
+
+    //EFFECT: Set cost of ToDoItem
+    //MODIFIES: this
+    public void setCost(double n) {
+        this.cost = n;
     }
 }

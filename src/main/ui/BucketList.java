@@ -95,17 +95,17 @@ public class BucketList {
         System.out.println("Set a date : ");
         String date = input.next();
         td.setDate(date);
+        System.out.println("Enter Cost Estimate");
+        double cost = input.nextDouble();
+        td.setCost(cost);
         System.out.println("Enter name of Category : ");
         String catName = input.next();
-        Categories c = new Categories(catName);
-        try {
-            inv.addCategory(c);
-        } catch (AlreadyExists alreadyExists) {
-            alreadyExists.printStackTrace();
-            System.out.println("Category Already Exists");
+        if (inv.searchForCategory(catName) == null) {
+            inv.addCategory(catName);
+            inv.searchForCategory(catName).addToDoItemInCategory(td);
+        } else {
+            inv.searchForCategory(catName).addToDoItemInCategory(td);
         }
-        c.addToDoItemInCategory(td);
-        System.out.println("ToDo added successfully");
     }
 
     // MODIFIES: this

@@ -65,7 +65,7 @@ public class Categories {
     //EFFECT: print out ToDoItem(s) in Category
     public void printCategory(ArrayList<ToDoItem> n) {
         for (int i = 0; i < n.size(); i++) {
-            System.out.println(n.get(i).getName() + "-" + " " + n.get(i).getDate());
+            System.out.println(n.get(i).getName() + "-" + " " + n.get(i).getDate() + " " + "$" + n.get(i).getCost());
         }
     }
 }

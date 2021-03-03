@@ -89,5 +89,15 @@ public void Setup() {
         testCategory.addToDoItemInCategory(n);
         assertEquals(testCategory.getListSize(),1);
     }
+
+    @Test
+    public void testAddToDoItemMany() {
+        ToDoItem n = new ToDoItem("run");
+        testCategory.addToDoItemInCategory(n);
+        ToDoItem s = new ToDoItem("walk");
+        testCategory.addToDoItemInCategory(s);
+        assertEquals(testCategory.getListSize(), 2);
+
+    }
 }
 
