@@ -1,5 +1,6 @@
 package model;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Categories {
@@ -26,6 +27,7 @@ public class Categories {
     public ArrayList<ToDoItem> getList() {
         return toDoItemList;
     }
+
 
 
     //EFFECTS: add ToDoItem into category

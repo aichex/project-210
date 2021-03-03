@@ -37,12 +37,19 @@ I will be able to keep track of all the things we want to do together and plan o
 
 ## Phase 1: 
 
-### User Stores Implemented:  
+### User Stories Implemented:  
 1. User Story: Add a ToDo Item into list and set a date in format "MM/DD/YY"
 CONSTRAINT: Only one string can be taken for the name. 
 2. User Story: Delete a ToDo Item from current ToDo list by name 
 3. User Story: Show all ToDo Items in current ToDo list 
 4. User Story: Mark a current ToDo Item as Completed, which moves item to Completed ToDo List
 5. User Story: Show all ToDo Items in completed ToDo List 
+
+## Phase 2: 
+
+### User Stories Implemented: 
+6. User Story: To add a ToDo Item, must select Category  
+7. User Story: Show ToDO Items in selected Category 
+8. User Story: Show all Categories in Inventory 
 
 

@@ -1,17 +1,21 @@
 package ui;
 
+import Exceptions.AlreadyExists;
 import model.Categories;
+import model.Completed;
+import model.Inventory;
 import model.ToDoItem;
 
 import java.util.Scanner;
 
-// Bank teller application
+// BucketList application
 public class BucketList {
+    private Inventory inv;
     private Categories comp;
     private Categories pend;
     private Scanner input;
 
-    // EFFECTS: runs the teller application
+    // EFFECTS: runs the Bucketlist application
     public BucketList() {
         runBucket();
     }
@@ -48,10 +52,12 @@ public class BucketList {
             deleteToDo();
         } else if (command.equals("m")) {
             completeItem();
-        } else if (command.equals("s")) {
+        } else if (command.equals("l")) {
             showCurrentList();
         } else if (command.equals("c")) {
             showCompleteList();
+        } else  if (command.equals("s")) {
+            showAllCategories();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -62,17 +68,19 @@ public class BucketList {
     private void init() {
         comp = new Categories("Completed");
         pend = new Categories("Current");
+        inv = new Inventory();
         input = new Scanner(System.in);
     }
 
     // EFFECTS: displays menu of options to user
     private void displayMenu() {
         System.out.println("\nSelect from:");
-        System.out.println("\ta -> add ToDo");
-        System.out.println("\td -> delete ToDo");
+        System.out.println("\ta -> Add ToDo");
+        System.out.println("\td -> Delete ToDo");
         System.out.println("\tm -> Mark ToDo as complete");
-        System.out.println("\ts -> show Current ToDo");
-        System.out.println("\tc -> show Completed ToDo");
+        System.out.println("\tl -> Show ToDo's in Category");
+        System.out.println("\tc -> Show Completed ToDo");
+        System.out.println("\ts -> Show All Categories");
         System.out.println("\tq -> quit");
     }
 
@@ -87,30 +95,53 @@ public class BucketList {
         System.out.println("Set a date : ");
         String date = input.next();
         td.setDate(date);
-        pend.addToDoItemInCategory(td);
+        System.out.println("Enter name of Category : ");
+        String catName = input.next();
+        Categories c = new Categories(catName);
+        try {
+            inv.addCategory(c);
+        } catch (AlreadyExists alreadyExists) {
+            alreadyExists.printStackTrace();
+            System.out.println("Category Already Exists");
+        }
+        c.addToDoItemInCategory(td);
         System.out.println("ToDo added successfully");
     }
 
     // MODIFIES: this
-    // EFFECTS: delete a ToDoItem from list
+    // EFFECTS: delete a ToDoItem from Category
     private void deleteToDo() {
-        System.out.print("Enter name of ToDo : ");
+        System.out.print("Enter name of Category ToDo is in : ");
         String name = input.next();
-        if (pend.searchForToDo(name) == null) {
-            System.out.println("Item not found...");
+        Categories cat = inv.searchForCategory(name);
+        if (cat == null) {
+            System.out.println("Category not found...");
         } else {
-            pend.deleteToDo(name);
-            System.out.println("To do Deleted Successfully!");
+            System.out.println("Enter name of ToDo");
+            String toDoName = input.next();
+            if (cat.searchForToDo(toDoName) == null) {
+                System.out.println("Item Not Found...");
+            } else {
+                cat.deleteToDo(toDoName);
+                System.out.println("To do Deleted Successfully!");
+            }
         }
     }
 
     // MODIFIES: this
-    // EFFECTS: shows all Current ToDoItems in list
+    // EFFECTS: shows all Current ToDoItems in Category
     private void showCurrentList() {
-        if (!pend.getList().isEmpty()) {
-            pend.printCategory(pend.getList());
+        System.out.println("Enter name of Category : ");
+        String name = input.next();
+        Categories cat = inv.searchForCategory(name);
+        if (cat == null) {
+            System.out.println("Category not Found...");
         } else {
-            System.out.println("No more ToDo's!");
+            if (cat.getList().isEmpty()) {
+                System.out.println("No more ToDo's!");
+            } else {
+                cat.printCategory(cat.getList());
+            }
         }
     }
 
@@ -127,15 +158,30 @@ public class BucketList {
     //MODIFIES: this
     //EFFECTS: mark Item as completed
     private void completeItem() {
-        System.out.println("Enter name of ToDo : ");
+        System.out.println("Enter Category of Item : ");
         String name = input.next();
-        if (pend.searchForToDo(name) == null) {
-            System.out.println("Item Not Found...");
+        Categories cat = inv.searchForCategory(name);
+        if (cat == null) {
+            System.out.println("Category Not Found...");
         } else {
-            comp.addToDoItemInCategory(pend.searchForToDo(name));
-            pend.searchForToDo(name).statusCompleted();
-            pend.deleteToDo(name);
-            System.out.println("Item marked as completed!");
+            System.out.println("Enter Name of ToDo : ");
+            String toDoName = input.next();
+            if (cat.searchForToDo(toDoName) == null) {
+                System.out.println("ToDo Item Not found");
+            } else {
+                cat.searchForToDo(toDoName).statusCompleted();
+                comp.addToDoItemInCategory(cat.searchForToDo(toDoName));
+                cat.deleteToDo(toDoName);
+                System.out.println("Item marked as Completed!");
+            }
+        }
+    }
+
+    private void showAllCategories() {
+        if (!inv.getCategories().isEmpty()) {
+            inv.printAllCategory(inv.getCategories());
+        } else {
+            System.out.println("No Categories To Display");
         }
     }
 }

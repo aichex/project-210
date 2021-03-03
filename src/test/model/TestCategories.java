@@ -17,6 +17,7 @@ class TestCategories {
 public void Setup() {
     testCategory = new Categories("testCategory");
     testCategory2 = new Categories("testCategory2");
+    TEST_TODO = new ToDoItem("HotPot");
     }
 
     @Test
