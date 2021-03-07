@@ -5,18 +5,25 @@ import model.Categories;
 import model.Completed;
 import model.Inventory;
 import model.ToDoItem;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 // BucketList application
 public class BucketList {
+    private static final String JSON_STORE = "./data/workroom.json";
     private Inventory inv;
     private Categories comp;
     private Categories pend;
     private Scanner input;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
     // EFFECTS: runs the Bucketlist application
-    public BucketList() {
+    public BucketList() throws FileNotFoundException {
         runBucket();
     }
 
@@ -30,7 +37,7 @@ public class BucketList {
 
         while (keepGoing) {
             displayMenu();
-            command = input.next();
+            command = input.nextLine();
             command = command.toLowerCase();
 
             if (command.equals("q")) {
@@ -58,6 +65,10 @@ public class BucketList {
             showCompleteList();
         } else  if (command.equals("s")) {
             showAllCategories();
+        } else if (command.equals("w")) {
+            saveCompletedItems();
+        } else if (command.equals("e")) {
+            loadCompletedItems();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -70,6 +81,8 @@ public class BucketList {
         pend = new Categories("Current");
         inv = new Inventory();
         input = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
     }
 
     // EFFECTS: displays menu of options to user
@@ -81,6 +94,8 @@ public class BucketList {
         System.out.println("\tl -> Show ToDo's in Category");
         System.out.println("\tc -> Show Completed ToDo");
         System.out.println("\ts -> Show All Categories");
+        System.out.println("\tw -> Save Completed Items");
+        System.out.println("\te -> Load Completed Items");
         System.out.println("\tq -> quit");
     }
 
@@ -90,16 +105,16 @@ public class BucketList {
 
     private void addToDo() {
         System.out.println("Enter name of ToDo : ");
-        String name = input.next();
+        String name = input.nextLine();
         ToDoItem td = new ToDoItem(name);
         System.out.println("Set a date : ");
-        String date = input.next();
+        String date = input.nextLine();
         td.setDate(date);
         System.out.println("Enter Cost Estimate");
-        double cost = input.nextDouble();
-        td.setCost(cost);
+        String cost = input.nextLine();
+        td.setCost(Double.parseDouble(cost));
         System.out.println("Enter name of Category : ");
-        String catName = input.next();
+        String catName = input.nextLine();
         if (inv.searchForCategory(catName) == null) {
             inv.addCategory(catName);
             inv.searchForCategory(catName).addToDoItemInCategory(td);
@@ -112,13 +127,13 @@ public class BucketList {
     // EFFECTS: delete a ToDoItem from Category
     private void deleteToDo() {
         System.out.print("Enter name of Category ToDo is in : ");
-        String name = input.next();
+        String name = input.nextLine();
         Categories cat = inv.searchForCategory(name);
         if (cat == null) {
             System.out.println("Category not found...");
         } else {
             System.out.println("Enter name of ToDo");
-            String toDoName = input.next();
+            String toDoName = input.nextLine();
             if (cat.searchForToDo(toDoName) == null) {
                 System.out.println("Item Not Found...");
             } else {
@@ -132,7 +147,7 @@ public class BucketList {
     // EFFECTS: shows all Current ToDoItems in Category
     private void showCurrentList() {
         System.out.println("Enter name of Category : ");
-        String name = input.next();
+        String name = input.nextLine();
         Categories cat = inv.searchForCategory(name);
         if (cat == null) {
             System.out.println("Category not Found...");
@@ -159,13 +174,13 @@ public class BucketList {
     //EFFECTS: mark Item as completed
     private void completeItem() {
         System.out.println("Enter Category of Item : ");
-        String name = input.next();
+        String name = input.nextLine();
         Categories cat = inv.searchForCategory(name);
         if (cat == null) {
             System.out.println("Category Not Found...");
         } else {
             System.out.println("Enter Name of ToDo : ");
-            String toDoName = input.next();
+            String toDoName = input.nextLine();
             if (cat.searchForToDo(toDoName) == null) {
                 System.out.println("ToDo Item Not found");
             } else {
@@ -182,6 +197,27 @@ public class BucketList {
             inv.printAllCategory(inv.getCategories());
         } else {
             System.out.println("No Categories To Display");
+        }
+    }
+
+    // EFFECTS: saves the workroom to file
+    private void saveCompletedItems() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(comp);
+            jsonWriter.close();
+            System.out.println("Saved " + "Completed" + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    private void loadCompletedItems() {
+        try {
+            comp = jsonReader.read();
+            System.out.println("Loaded " + "Completed" + "from" + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 }

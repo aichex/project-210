@@ -1,8 +1,11 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
-public class Completed extends Categories {
+public class Completed extends Categories implements Writable {
     private ArrayList<ToDoItem> completedList;
 
     public Completed(String name) {
@@ -18,5 +21,10 @@ public class Completed extends Categories {
     //EFFECTS: remove ToDoItem in Completed list
     public void removeFromCompletedList(ToDoItem tdn) {
         completedList.remove(tdn);
+    }
+
+    @Override
+    public JSONObject toJson() {
+        return null;
     }
 }

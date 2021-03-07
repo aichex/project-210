@@ -1,9 +1,13 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Categories {
+public class Categories implements Writable {
     private String categoryName;
     private ArrayList<ToDoItem> toDoItemList;
 
@@ -67,5 +71,23 @@ public class Categories {
         for (int i = 0; i < n.size(); i++) {
             System.out.println(n.get(i).getName() + "-" + " " + n.get(i).getDate() + " " + "$" + n.get(i).getCost());
         }
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", categoryName);
+        json.put("items", itemsToJson());
+        return  json;
+    }
+
+    private JSONArray itemsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (ToDoItem t : toDoItemList) {
+            jsonArray.put(t.toJson());
+        }
+
+        return jsonArray;
     }
 }

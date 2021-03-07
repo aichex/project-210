@@ -50,6 +50,8 @@ CONSTRAINT: Only one string can be taken for the name.
 ### User Stories Implemented: 
 6. User Story: To add a ToDo Item, must select Category  
 7. User Story: Show ToDO Items in selected Category 
-8. User Story: Show all Categories in Inventory 
+8. User Story: Show all Categories in Inventory
+9. User Story: Save Completed To-Do list on file 
+10. User Story: Load Completed To-Do list from file 
 
 

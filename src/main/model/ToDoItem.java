@@ -1,7 +1,10 @@
 package model;
 
 
-public class ToDoItem {
+import org.json.JSONObject;
+import persistence.Writable;
+
+public class ToDoItem implements Writable {
     //Fields
     private String itemName;
     private String status;
@@ -14,7 +17,7 @@ public class ToDoItem {
     public ToDoItem(String name) {
         this.itemName = name;
         this.status = "";
-        this.date = "";
+        this.date = "01/01/21";
         this.cost = 0.00;
     }
 
@@ -57,5 +60,15 @@ public class ToDoItem {
     //MODIFIES: this
     public void setCost(double n) {
         this.cost = n;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", itemName);
+        json.put("status", status);
+        json.put("date", date);
+        json.put("cost", cost);
+        return json;
     }
 }
