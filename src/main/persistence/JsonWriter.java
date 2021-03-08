@@ -1,6 +1,7 @@
 package persistence;
 
 import com.sun.corba.se.spi.orbutil.threadpool.Work;
+import jdk.internal.org.objectweb.asm.util.TraceAnnotationVisitor;
 import model.Categories;
 import model.Inventory;
 import org.json.JSONObject;
@@ -28,7 +29,7 @@ public class JsonWriter {
 
     //MODIFIES: this
     //EFFECTS: writes JSON representation of Categories to file
-    public void write(Categories c) {
+    public void writeCategories(Categories c) {
         JSONObject json = c.toJson();
         saveToFile(json.toString(TAB));
     }

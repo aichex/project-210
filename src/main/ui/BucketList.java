@@ -1,8 +1,6 @@
 package ui;
 
-import Exceptions.AlreadyExists;
 import model.Categories;
-import model.Completed;
 import model.Inventory;
 import model.ToDoItem;
 import persistence.JsonReader;
@@ -79,7 +77,7 @@ public class BucketList {
     private void init() {
         comp = new Categories("Completed");
         pend = new Categories("Current");
-        inv = new Inventory();
+        inv = new Inventory("Hasen's Bucketlist");
         input = new Scanner(System.in);
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
@@ -102,7 +100,6 @@ public class BucketList {
     // CONSTRAINTS: name of ToDoItem can only take one string
     // MODIFIES: this
     // EFFECTS: adds a ToDoItem into list
-
     private void addToDo() {
         System.out.println("Enter name of ToDo : ");
         String name = input.nextLine();
@@ -192,6 +189,7 @@ public class BucketList {
         }
     }
 
+    //EFFECTS: Shows all Categories in Inventory
     private void showAllCategories() {
         if (!inv.getCategories().isEmpty()) {
             inv.printAllCategory(inv.getCategories());
@@ -200,11 +198,11 @@ public class BucketList {
         }
     }
 
-    // EFFECTS: saves the workroom to file
+    // EFFECTS: saves Completed Items to file
     private void saveCompletedItems() {
         try {
             jsonWriter.open();
-            jsonWriter.write(comp);
+            jsonWriter.writeCategories(comp);
             jsonWriter.close();
             System.out.println("Saved " + "Completed" + " to " + JSON_STORE);
         } catch (FileNotFoundException e) {
@@ -212,9 +210,11 @@ public class BucketList {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: Loads Completed Items from file
     private void loadCompletedItems() {
         try {
-            comp = jsonReader.read();
+            comp = jsonReader.readCategories();
             System.out.println("Loaded " + "Completed" + "from" + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);

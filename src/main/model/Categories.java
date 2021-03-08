@@ -4,7 +4,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Categories implements Writable {
@@ -33,10 +32,8 @@ public class Categories implements Writable {
     }
 
 
-
     //EFFECTS: add ToDoItem into category
     //MODIFIES: this
-
     public void addToDoItemInCategory(ToDoItem tdn) {
         toDoItemList.add(tdn);
     }
@@ -50,9 +47,9 @@ public class Categories implements Writable {
         }
         return null;
     }
+
     //EFFECTS: Searches for item, if item is in ToDoItem List, deleted ToDoItem
     //MODIFIES: this
-
     public void deleteToDo(String nam) {
         ToDoItem item = this.searchForToDo(nam);
         toDoItemList.remove(item);
@@ -61,7 +58,6 @@ public class Categories implements Writable {
 
     //EFFECTS: Change name of category
     //MODIFIES: this
-
     public void changeName(String s) {
         this.categoryName = s;
     }
@@ -78,7 +74,7 @@ public class Categories implements Writable {
         JSONObject json = new JSONObject();
         json.put("name", categoryName);
         json.put("items", itemsToJson());
-        return  json;
+        return json;
     }
 
     private JSONArray itemsToJson() {

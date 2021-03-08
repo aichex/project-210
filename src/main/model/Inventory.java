@@ -10,12 +10,15 @@ import persistence.Writable;
 import java.util.ArrayList;
 
 public class Inventory implements Writable {
+    private String name;
     private ArrayList<Categories> inv;
 
     //Constructor
 
-    public Inventory() {
+    public Inventory(String name) {
+
         this.inv = new ArrayList<Categories>();
+        this.name = name;
     }
 
     //Getters:
@@ -52,7 +55,8 @@ public class Inventory implements Writable {
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
-        json.put("Inventory", categoriesToJson());
+        json.put("name", name);
+        json.put("category", categoriesToJson());
         return json;
     }
 

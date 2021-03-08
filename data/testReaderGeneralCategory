@@ -1,0 +1,17 @@
+{
+  "name": "Restaurants",
+  "items": [
+    {
+      "date": "",
+      "cost": 0,
+      "name": "Mikus",
+      "status": ""
+    },
+    {
+      "date": "",
+      "cost": 0,
+      "name": "Minami",
+      "status": ""
+    }
+  ]
+}
