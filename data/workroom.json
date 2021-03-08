@@ -1,0 +1,9 @@
+{
+    "name": "Completed",
+    "items": [{
+        "date": "03/03/03",
+        "cost": 500,
+        "name": "test",
+        "status": "completed"
+    }]
+}

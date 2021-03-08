@@ -61,7 +61,7 @@ public class BucketList {
             showCurrentList();
         } else if (command.equals("c")) {
             showCompleteList();
-        } else  if (command.equals("s")) {
+        } else if (command.equals("s")) {
             showAllCategories();
         } else if (command.equals("w")) {
             saveCompletedItems();

@@ -24,7 +24,7 @@ public class testJsonReader extends testJson {
 
     @Test
     void testReaderEmptyCategory() {
-        JsonReader reader = new JsonReader("./data/testReaderEmptyCategory");
+        JsonReader reader = new JsonReader("./data/testReaderEmptyCategory.json");
         try {
             Categories c = reader.readCategories();
             assertEquals("Restaurants", c.getCategoryName());
@@ -35,7 +35,7 @@ public class testJsonReader extends testJson {
 
     @Test
     void testReaderGeneralCategory() {
-        JsonReader reader = new JsonReader("./data/testReaderGeneralCategory");
+        JsonReader reader = new JsonReader("./data/testReaderGeneralCategory.json");
         try {
             Categories c = reader.readCategories();
             assertEquals("Restaurants", c.getCategoryName());

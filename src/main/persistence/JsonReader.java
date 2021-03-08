@@ -3,11 +3,13 @@ package persistence;
 
 import model.Categories;
 import model.ToDoItem;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
+
 import org.json.*;
 
 
