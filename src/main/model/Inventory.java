@@ -2,8 +2,6 @@ package model;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import persistence.JsonReader;
-import persistence.JsonWriter;
 import persistence.Writable;
 
 import java.util.ArrayList;
