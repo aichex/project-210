@@ -14,7 +14,7 @@ class TestCategories {
 
     @BeforeEach
 
-public void Setup() {
+public void setup() {
     testCategory = new Categories("testCategory");
     testCategory2 = new Categories("testCategory2");
     TEST_TODO = new ToDoItem("HotPot");

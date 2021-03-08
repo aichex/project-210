@@ -77,13 +77,13 @@ public class Categories implements Writable {
         return json;
     }
 
+    //EFFECTS: Returns items in Category as JSONArray
     private JSONArray itemsToJson() {
         JSONArray jsonArray = new JSONArray();
 
         for (ToDoItem t : toDoItemList) {
             jsonArray.put(t.toJson());
         }
-
         return jsonArray;
     }
 }

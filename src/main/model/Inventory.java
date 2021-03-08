@@ -27,15 +27,15 @@ public class Inventory implements Writable {
         return inv;
     }
 
-    public int numCategories() {
-        return inv.size();
-    }
 
+    //MODIFIES: this
+    //Adds Category into Inventory
     public void addCategory(String name) {
         Categories c = new Categories(name);
         inv.add(c);
     }
 
+    //EFFECTS: Search for Category in Inventory, if not found return null
     public Categories searchForCategory(String name) {
         for (int i = 0; i < inv.size(); i++) {
             if (name.equals((inv.get(i)).getCategoryName())) {
@@ -67,7 +67,6 @@ public class Inventory implements Writable {
         for (Categories c : inv) {
             jsonArray.put(c.toJson());
         }
-
         return jsonArray;
     }
 }
