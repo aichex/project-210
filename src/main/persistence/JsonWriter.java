@@ -1,9 +1,7 @@
 package persistence;
 
-import com.sun.corba.se.spi.orbutil.threadpool.Work;
-import jdk.internal.org.objectweb.asm.util.TraceAnnotationVisitor;
+
 import model.Categories;
-import model.Inventory;
 import org.json.JSONObject;
 
 import java.io.File;
