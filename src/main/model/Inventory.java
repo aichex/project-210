@@ -1,6 +1,5 @@
 package model;
 
-import Exceptions.AlreadyExists;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.JsonReader;
