@@ -97,7 +97,7 @@ public class BucketList {
         System.out.println("\tq -> quit");
     }
 
-    // CONSTRAINTS: name of ToDoItem can only take one string
+    // CONSTRAINTS: name of ToDoItem can only take one stringas
     // MODIFIES: this
     // EFFECTS: adds a ToDoItem into list
     private void addToDo() {

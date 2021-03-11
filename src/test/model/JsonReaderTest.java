@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-public class testJsonReader extends testJson {
+public class JsonReaderTest extends JsonTest {
 
     @Test
     void testReaderNonExistentFile() {

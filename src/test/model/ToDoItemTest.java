@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class TestToDoItem {
+class ToDoItemTest {
     private ToDoItem testItem;
     private ToDoItem testItem2;
     public String ITEM_NAME = "Date Night";

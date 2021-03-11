@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
-public class testJsonWriter extends testJson {
+public class JsonWriterTest extends JsonTest {
 
     @Test
     void testWriterInvalidFile() {

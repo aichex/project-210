@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class TestCategories {
+class CategoriesTest {
     private Categories testCategory;
     private Categories testCategory2;
     private String CATEGORY_NAME = "Date Night";

@@ -13,7 +13,7 @@ public class ToDoItem implements Writable {
 
     //TODOItem is a task entry that will have a status- pending/complete name and date in format MM/DD/YY
 
-    //Constructor
+    //EFFECTS: Create a ToDoItem
     public ToDoItem(String name) {
         this.itemName = name;
         this.status = "";

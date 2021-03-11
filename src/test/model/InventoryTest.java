@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class testInventory {
+public class InventoryTest {
     private Inventory testInventory;
     private String INVENTORY_NAME = "Hasen's BucketList";
     private Categories testCategory;

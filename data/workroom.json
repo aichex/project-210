@@ -1,9 +1,17 @@
 {
     "name": "Completed",
-    "items": [{
-        "date": "03/03/03",
-        "cost": 500,
-        "name": "test",
-        "status": "completed"
-    }]
+    "items": [
+        {
+            "date": "03/10/21",
+            "cost": 0,
+            "name": "test",
+            "status": ""
+        },
+        {
+            "date": "03/10/21",
+            "cost": 0,
+            "name": "test2",
+            "status": "completed"
+        }
+    ]
 }
