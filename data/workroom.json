@@ -1,17 +1,12 @@
 {
-    "name": "Completed",
-    "items": [
-        {
+    "name": "Hasen's Bucketlist",
+    "category": [{
+        "name": "testing",
+        "items": [{
             "date": "03/10/21",
             "cost": 0,
             "name": "test",
             "status": ""
-        },
-        {
-            "date": "03/10/21",
-            "cost": 0,
-            "name": "test2",
-            "status": "completed"
-        }
-    ]
+        }]
+    }]
 }

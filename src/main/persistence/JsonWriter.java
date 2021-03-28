@@ -2,6 +2,7 @@ package persistence;
 
 
 import model.Categories;
+import model.Inventory;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -29,6 +30,11 @@ public class JsonWriter {
     //EFFECTS: writes JSON representation of Categories to file
     public void writeCategories(Categories c) {
         JSONObject json = c.toJson();
+        saveToFile(json.toString(TAB));
+    }
+
+    public void writeInventory(Inventory i) {
+        JSONObject json = i.toJson();
         saveToFile(json.toString(TAB));
     }
 

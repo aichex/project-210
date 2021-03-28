@@ -63,10 +63,11 @@ public class Categories implements Writable {
     }
 
     //EFFECT: print out ToDoItem(s) in Category
-    public void printCategory(ArrayList<ToDoItem> n) {
+    public String printCategory(ArrayList<ToDoItem> n) {
         for (int i = 0; i < n.size(); i++) {
             System.out.println(n.get(i).getName() + "-" + " " + n.get(i).getDate() + " " + "$" + n.get(i).getCost());
         }
+        return null;
     }
 
     @Override

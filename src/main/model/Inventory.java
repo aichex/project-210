@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Inventory implements Writable {
     private String name;
@@ -29,6 +30,10 @@ public class Inventory implements Writable {
     //Adds Category into Inventory
     public void addCategory(String name) {
         Categories c = new Categories(name);
+        inv.add(c);
+    }
+
+    public void addCategory(Categories c) {
         inv.add(c);
     }
 

@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 // BucketList application
 public class BucketList {
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/bucketlist.json";
     private Inventory inv;
     private Categories comp;
     private Categories pend;
@@ -64,9 +64,9 @@ public class BucketList {
         } else if (command.equals("s")) {
             showAllCategories();
         } else if (command.equals("w")) {
-            saveCompletedItems();
+            saveInventory();
         } else if (command.equals("e")) {
-            loadCompletedItems();
+            loadInventory();
         } else {
             System.out.println("Selection not valid...");
         }
@@ -92,8 +92,8 @@ public class BucketList {
         System.out.println("\tl -> Show ToDo's in Category");
         System.out.println("\tc -> Show Completed ToDo");
         System.out.println("\ts -> Show All Categories");
-        System.out.println("\tw -> Save Completed Items");
-        System.out.println("\te -> Load Completed Items");
+        System.out.println("\tw -> Save BucketList");
+        System.out.println("\te -> Load BucketList");
         System.out.println("\tq -> quit");
     }
 
@@ -218,6 +218,26 @@ public class BucketList {
             System.out.println("Loaded " + "Completed" + "from" + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
+    private void saveInventory() {
+        try {
+            jsonWriter.open();
+            jsonWriter.writeInventory(inv);
+            jsonWriter.close();
+            System.out.println("Saved" + "BucketList" + "to" + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    private void loadInventory() {
+        try {
+            inv = jsonReader.readInventory();
+            System.out.println("Loaded" + "BucketList" + "from" + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
         }
     }
 }

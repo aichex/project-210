@@ -2,8 +2,10 @@ package persistence;
 
 
 import model.Categories;
+import model.Inventory;
 import model.ToDoItem;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -21,13 +23,19 @@ public class JsonReader {
         this.source = source;
     }
 
-    // EFFECTS: reads category from file and returns it;
-    // throws IOException if an error occurs reading data from file
+    // EFFECTS: reads category from file and returns it; throws IOException if an error occurs reading data from file
     public Categories readCategories() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseCategories(jsonObject);
     }
+
+    public Inventory readInventory() throws IOException {
+        String jsonData = readFile(source);
+        JSONObject jsonObject = new JSONObject(jsonData);
+        return parseInventory(jsonObject);
+    }
+
 
     // EFFECTS: reads source file as string and returns it
     private String readFile(String source) throws IOException {
@@ -70,6 +78,34 @@ public class JsonReader {
         item.setDate(date);
         c.addToDoItemInCategory(item);
     }
+
+    private void addCategories(Inventory i, JSONObject jsonObject) {
+        JSONArray jsonArray = jsonObject.getJSONArray("category");
+        for (Object json : jsonArray) {
+            JSONObject nextCategory = (JSONObject) json;
+            addCategory(i, nextCategory);
+        }
+    }
+
+    private void addCategory(Inventory i, JSONObject jsonObject) {
+        String name = jsonObject.getString("name");
+        JSONArray items = jsonObject.getJSONArray("items");
+        Categories c = new Categories(name);
+        for (Object json : items) {
+            JSONObject nextItem = (JSONObject) json;
+            addItem(c, nextItem);
+        }
+        i.addCategory(c);
+    }
+
+    private Inventory parseInventory(JSONObject jsonObject) {
+        String name = jsonObject.getString("name");
+        Inventory i = new Inventory(name);
+        addCategories(i, jsonObject);
+        return i;
+    }
+
+
 
 
 }
