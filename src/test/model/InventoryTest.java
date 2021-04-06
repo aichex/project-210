@@ -45,4 +45,12 @@ public class InventoryTest {
         testInventory.addCategory(testCategory.getCategoryName());
         assertEquals(testInventory.searchForCategory("test"), null);
     }
+
+    @Test
+
+    public void testAddCategory() {
+        testInventory.addCategory(new Categories("test"));
+        assertEquals(testInventory.getCategoryNames(testInventory.getCategories()), "test");
+    }
+
 }

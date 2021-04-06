@@ -40,5 +40,13 @@ class ToDoItemTest {
         assertEquals(testItem.getDate(), "01/01/21");
     }
 
+    @Test
+
+    public void testSetCost() {
+        testItem.setCost(20);
+        assertEquals(testItem.getCost(), 20);
+
+    }
+
 }
 

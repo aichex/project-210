@@ -44,6 +44,13 @@ public abstract class Tool {
 
     protected abstract void addListener();
 
+    // MODIFIES: this
+    // EFFECTS: sets the button to enabled to disabled
+    public void setEnabled(boolean b) {
+        button.setEnabled(b);
+    }
+
+
 
     public void addToParent(JComponent parent) {
         parent.add(button);

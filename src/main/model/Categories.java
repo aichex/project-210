@@ -62,12 +62,12 @@ public class Categories implements Writable {
         this.categoryName = s;
     }
 
-    //EFFECT: print out ToDoItem(s) in Category
-    public String printCategory(ArrayList<ToDoItem> n) {
+    public String getItems(ArrayList<ToDoItem> n) {
+        String name = "";
         for (int i = 0; i < n.size(); i++) {
-            System.out.println(n.get(i).getName() + "-" + " " + n.get(i).getDate() + " " + "$" + n.get(i).getCost());
+            name += "name: " + n.get(i).getName() + " ";
         }
-        return null;
+        return name;
     }
 
     @Override
@@ -86,5 +86,10 @@ public class Categories implements Writable {
             jsonArray.put(t.toJson());
         }
         return jsonArray;
+    }
+
+    @Override
+    public String toString() {
+        return categoryName;
     }
 }

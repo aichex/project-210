@@ -59,10 +59,10 @@ public class BucketList {
             completeItem();
         } else if (command.equals("l")) {
             showCurrentList();
-        } else if (command.equals("c")) {
-            showCompleteList();
-        } else if (command.equals("s")) {
-            showAllCategories();
+        //} else if (command.equals("c")) {
+            //showCompleteList();
+       // } else if (command.equals("s")) {
+            //showAllCategories();
         } else if (command.equals("w")) {
             saveInventory();
         } else if (command.equals("e")) {
@@ -151,21 +151,21 @@ public class BucketList {
         } else {
             if (cat.getList().isEmpty()) {
                 System.out.println("No more ToDo's!");
-            } else {
-                cat.printCategory(cat.getList());
+            //} else {
+               // cat.printCategory(cat.getList());
             }
         }
     }
 
     //MODIFIES: this
     //EFFECTS: show all Completed ToDoItems in list
-    private void showCompleteList() {
-        if (!comp.getList().isEmpty()) {
-            comp.printCategory(comp.getList());
-        } else {
-            System.out.println("No Completed ToDo's!");
-        }
-    }
+    //private void showCompleteList() {
+        //if (!comp.getList().isEmpty()) {
+            //comp.printCategory(comp.getList());
+        //} else {
+            //System.out.println("No Completed To Do's!");
+        //}
+    //}
 
     //MODIFIES: this
     //EFFECTS: mark Item as completed
@@ -190,13 +190,13 @@ public class BucketList {
     }
 
     //EFFECTS: Shows all Categories in Inventory
-    private void showAllCategories() {
-        if (!inv.getCategories().isEmpty()) {
-            inv.printAllCategory(inv.getCategories());
-        } else {
-            System.out.println("No Categories To Display");
-        }
-    }
+    //private void showAllCategories() {
+        //if (!inv.getCategories().isEmpty()) {
+            //inv.printAllCategory(inv.getCategories());
+        //} else {
+           // System.out.println("No Categories To Display");
+        //}
+    //}
 
     // EFFECTS: saves Completed Items to file
     private void saveCompletedItems() {

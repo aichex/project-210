@@ -47,11 +47,13 @@ public class Inventory implements Writable {
         return null;
     }
 
-    //EFFECTS: Print all categories in Inventory
-    public void printAllCategory(ArrayList<Categories> n) {
+
+    public String getCategoryNames(ArrayList<Categories> n) {
+        String name = "";
         for (int i = 0; i < n.size(); i++) {
-            System.out.println(n.get(i).getCategoryName());
+         name += n.get(i).getCategoryName();
         }
+        return name;
     }
 
     @Override

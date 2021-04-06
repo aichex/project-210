@@ -99,5 +99,11 @@ public void setup() {
         assertEquals(testCategory.getListSize(), 2);
 
     }
+
+    @Test
+    public void testGetItems() {
+        testCategory.addToDoItemInCategory(TEST_TODO);
+        assertEquals(testCategory.getItems(testCategory.getList()), "name: HotPot ");
+    }
 }
 

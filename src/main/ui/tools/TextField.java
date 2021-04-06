@@ -12,6 +12,7 @@ public abstract class TextField {
     public TextField(BucketListGraphical frame, JComponent parent) {
         this.frame = frame;
         textField = new JTextField(10);
+        textField.setPreferredSize(new Dimension(100,10));
         addToParent(parent);
     }
 
@@ -24,10 +25,8 @@ public abstract class TextField {
     // EFFECTS: add listener to the text field
     protected abstract void addListener();
 
-    // MODIFIES: this
-    // EFFECT: sets the text field to empty
-    public void setEmpty() {
-        textField.setText("");
+    // EFFECTS: return the string in the text field
+    public String getText() {
+        return textField.getText();
     }
-
 }
