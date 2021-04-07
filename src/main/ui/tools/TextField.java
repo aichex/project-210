@@ -17,7 +17,7 @@ public abstract class TextField {
     }
 
     // MODIFIES: parent
-    // EFFECTS: add the text field to the parent component with the given constraints
+    // EFFECTS: add the text field to the parent component
     private void addToParent(JComponent parent) {
         parent.add(textField);
     }

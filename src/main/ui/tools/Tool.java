@@ -1,8 +1,6 @@
 package ui.tools;
 
-import model.ToDoItem;
-import model.Categories;
-import model.Inventory;
+
 import ui.BucketListGraphical;
 
 import javax.swing.*;
@@ -10,38 +8,19 @@ import javax.swing.*;
 public abstract class Tool {
     JButton button;
     protected BucketListGraphical frame;
-    private boolean active;
+
 
     public Tool(BucketListGraphical frame, JComponent parent) {
         this.frame = frame;
         createButton(parent);
         addToParent(parent);
-        active = false;
         addListener();
     }
 
-    protected JButton customizeButton(JButton button) {
-        button.setBorderPainted(true);
-        button.setFocusPainted(true);
-        button.setContentAreaFilled(true);
-        return button;
-    }
-
-    //getters
-    public boolean isActive() {
-        return active;
-    }
-
-    public void activate() {
-        active = true;
-    }
-
-    public void deactivate() {
-        active = false;
-    }
-
+    //EFFECTS: Creates a button for Tool
     protected abstract void createButton(JComponent parent);
 
+    //EFFECTS: Creates a Listener for the Button of the Tool
     protected abstract void addListener();
 
     // MODIFIES: this
@@ -50,8 +29,8 @@ public abstract class Tool {
         button.setEnabled(b);
     }
 
-
-
+    //MODIFIES: parent
+    //EFFECTS: Adds tool to given JComponent
     public void addToParent(JComponent parent) {
         parent.add(button);
     }

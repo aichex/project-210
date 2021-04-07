@@ -11,6 +11,10 @@ public class CategoryNameTool extends TextField {
         super(frame, parent);
     }
 
+    //TextField that allows users to input the name of Category to add into Inventory and show in JList
+
+    // MODIFIES: this
+    // EFFECTS: Create a new listener object and adds it to text field
     @Override
     protected void addListener() {
         textField.getDocument().addDocumentListener(new NameToolHandler());
@@ -36,15 +40,15 @@ public class CategoryNameTool extends TextField {
 
         }
 
-        // MODIFIES: todoList
-        // EFFECTS: enables the add button when text field is not empty and other conditions
+        // MODIFIES: BucketListGraphicalUI
+        // EFFECTS: enables the add button when text field is not empty
         private void changed() {
             String name = textField.getText();
 
             if (!name.isEmpty()) {
-                frame.add.setEnabled(true);
+                frame.getAdd().setEnabled(true);
             } else {
-                frame.add.setEnabled(false);
+                frame.getAdd().setEnabled(false);
             }
         }
     }

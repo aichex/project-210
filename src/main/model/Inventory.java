@@ -5,11 +5,13 @@ import org.json.JSONObject;
 import persistence.Writable;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+
 
 public class Inventory implements Writable {
     private String name;
     private ArrayList<Categories> inv;
+
+    //Inventory stores all Category class in an ArrayList
 
     //Constructor
 
@@ -27,12 +29,14 @@ public class Inventory implements Writable {
 
 
     //MODIFIES: this
-    //Adds Category into Inventory
+    //EFFECTS: Adds Category into Inventory given String
     public void addCategory(String name) {
         Categories c = new Categories(name);
         inv.add(c);
     }
 
+    //MODIFIES: this
+    //EFFECTS: Adds Category into Inventory given Category
     public void addCategory(Categories c) {
         inv.add(c);
     }
@@ -47,11 +51,11 @@ public class Inventory implements Writable {
         return null;
     }
 
-
+    //EFFECTS: Returns Category Name in form of String, used by GUI
     public String getCategoryNames(ArrayList<Categories> n) {
         String name = "";
         for (int i = 0; i < n.size(); i++) {
-         name += n.get(i).getCategoryName();
+            name += n.get(i).getCategoryName();
         }
         return name;
     }

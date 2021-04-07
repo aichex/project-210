@@ -30,6 +30,7 @@ public class JsonReader {
         return parseCategories(jsonObject);
     }
 
+    //EFFECTS: reads Inventory form file and returns it; throws IOException if an errors occurs reading data from file
     public Inventory readInventory() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);

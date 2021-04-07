@@ -1,6 +1,6 @@
 package ui.tools;
 
-import model.Categories;
+
 import model.ToDoItem;
 import ui.BucketListGraphical;
 
@@ -11,10 +11,14 @@ import java.awt.event.ActionListener;
 public class AddToDoTool extends Tool {
     private ToDoItem toDo;
 
+    //Button tht allows user to input a To-Do item into Completed Category
+
     public AddToDoTool(BucketListGraphical frame, JComponent parent) {
         super(frame, parent);
     }
 
+    //MODIFIES: this
+    //EFFECTS: Creates a new button and adds it to Parent JComponent
     @Override
     protected void createButton(JComponent parent) {
         button = new JButton("Add ToDo to Completed");
@@ -22,6 +26,8 @@ public class AddToDoTool extends Tool {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: Create a new Listener object and adds it to the button connected to the tool
     @Override
     protected void addListener() {
         button.addActionListener(new AddToDoTool.AddToDoHandler());
@@ -29,6 +35,9 @@ public class AddToDoTool extends Tool {
     }
 
     private class AddToDoHandler implements ActionListener {
+
+        //MODIFIES: BucketListGraphicalUI
+        // EFFECTS: Given text input, create a new To-Do Item with given name and adds it to frame
         @Override
         public void actionPerformed(ActionEvent e) {
             String name = frame.getToDoName();
