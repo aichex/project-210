@@ -4,16 +4,17 @@ package model;
 import org.json.JSONObject;
 import persistence.Writable;
 
+
+//TODOItem is a task entry that will have a status- pending/complete, name and date in format MM/DD/YY
+
 public class ToDoItem implements Writable {
-    //Fields
+
     private String itemName;
     private String status;
     private String date;
     private double cost;
 
-    //TODOItem is a task entry that will have a status- pending/complete name and date in format MM/DD/YY
-
-    //EFFECTS: Create a ToDoItem
+    //Constructor
     public ToDoItem(String name) {
         this.itemName = name;
         this.status = "";

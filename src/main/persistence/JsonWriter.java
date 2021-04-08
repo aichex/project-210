@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+// Represents a writer that writes JSON representation of Inventory to file
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;
@@ -33,6 +34,8 @@ public class JsonWriter {
         saveToFile(json.toString(TAB));
     }
 
+    //MODIFIES: this
+    //EFFECTS: writes JSON representation of Inventory to file
     public void writeInventory(Inventory i) {
         JSONObject json = i.toJson();
         saveToFile(json.toString(TAB));

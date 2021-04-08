@@ -5,9 +5,13 @@ import ui.BucketListGraphical;
 import javax.swing.*;
 import java.awt.*;
 
+// Abstract class that creates a TextField that requires a JFrame and Component designation
+
 public abstract class TextField {
     BucketListGraphical frame;
     JTextField textField;
+
+    //Constructor:
 
     public TextField(BucketListGraphical frame, JComponent parent) {
         this.frame = frame;

@@ -6,11 +6,12 @@ import persistence.Writable;
 
 import java.util.ArrayList;
 
+// Represents categories that stores ToDoItem in a list, each category can be named.
+
 public class Categories implements Writable {
     private String categoryName;
     private ArrayList<ToDoItem> toDoItemList;
 
-    // Categories stores ToDoItem in a list, each category can be named
 
     //CONSTRUCTOR
     public Categories(String name) {
@@ -70,14 +71,6 @@ public class Categories implements Writable {
         return name;
     }
 
-    @Override
-    public JSONObject toJson() {
-        JSONObject json = new JSONObject();
-        json.put("name", categoryName);
-        json.put("items", itemsToJson());
-        return json;
-    }
-
     //EFFECTS: Returns items in Category as JSONArray
     private JSONArray itemsToJson() {
         JSONArray jsonArray = new JSONArray();
@@ -86,6 +79,14 @@ public class Categories implements Writable {
             jsonArray.put(t.toJson());
         }
         return jsonArray;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", categoryName);
+        json.put("items", itemsToJson());
+        return json;
     }
 
     @Override

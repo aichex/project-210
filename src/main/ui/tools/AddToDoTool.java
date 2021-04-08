@@ -8,11 +8,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Represents a button tht allows user to input a To-Do item into Completed Category
+
 public class AddToDoTool extends Tool {
     private ToDoItem toDo;
 
-    //Button tht allows user to input a To-Do item into Completed Category
-
+    // Constructor
     public AddToDoTool(BucketListGraphical frame, JComponent parent) {
         super(frame, parent);
     }

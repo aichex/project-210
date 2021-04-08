@@ -6,12 +6,11 @@ import persistence.Writable;
 
 import java.util.ArrayList;
 
+//Represents an Inventory that stores all Categories in ArrayList
 
 public class Inventory implements Writable {
     private String name;
     private ArrayList<Categories> inv;
-
-    //Inventory stores all Category class in an ArrayList
 
     //Constructor
 

@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Represents a menuBar that allows users to save and load data to and from JSON
 
 public class MenuBar implements ActionListener {
     BucketListGraphical frame;
@@ -15,10 +16,8 @@ public class MenuBar implements ActionListener {
     JMenuItem menuL;
     JMenuItem menuS;
 
-    //MenuBar that allows users to save and load data
 
-    //CONSTRUCTOR:
-
+    //Constructor:
     public MenuBar(BucketListGraphical frame) {
         ImageIcon image1 = new ImageIcon("./data/loading.png");
         Image imageL = image1.getImage();

@@ -14,6 +14,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+// Main GUI
+
 public class BucketListGraphical extends JFrame {
     public static final int WIDTH = 1000;
     public static final int HEIGHT = 700;
@@ -34,8 +36,6 @@ public class BucketListGraphical extends JFrame {
     private ToDoNameTool toDoName;
     private MenuBar menu;
     private JLabel label;
-
-    //Main GUI
 
     //Constructor:
     public BucketListGraphical() throws FileNotFoundException {

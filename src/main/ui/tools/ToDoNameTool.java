@@ -6,12 +6,14 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+// Represents a textField that allows user to input name of ToDoItem they wish to add into Completed Category
+
 public class ToDoNameTool extends TextField {
+
+    //Constructor:
     public ToDoNameTool(BucketListGraphical frame, JComponent parent) {
         super(frame, parent);
     }
-
-    //TextField that allows user to input name of ToDoItem they wish to add into Completed Category
 
     // MODIFIES: this
     // EFFECTS: Create a new listener object and adds it to text field

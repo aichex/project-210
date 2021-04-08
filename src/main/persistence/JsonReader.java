@@ -14,6 +14,7 @@ import java.util.stream.Stream;
 
 import org.json.*;
 
+// Represents a reader that reads Inventory from JSON data stored in file
 
 public class JsonReader {
     private String source;
@@ -80,6 +81,8 @@ public class JsonReader {
         c.addToDoItemInCategory(item);
     }
 
+    // MODIFIES: Inventory
+    // EFFECTS: parses categories from JSON object and adds it to Inventory
     private void addCategories(Inventory i, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("category");
         for (Object json : jsonArray) {
@@ -87,7 +90,8 @@ public class JsonReader {
             addCategory(i, nextCategory);
         }
     }
-
+    //MODIFIES: Inventory
+    //EFFECTS: parses category from JSON object and adds it to Inventory
     private void addCategory(Inventory i, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         JSONArray items = jsonObject.getJSONArray("items");
@@ -99,6 +103,7 @@ public class JsonReader {
         i.addCategory(c);
     }
 
+    //EFFECTS: parses Inventory from JSON and returns it
     private Inventory parseInventory(JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         Inventory i = new Inventory(name);

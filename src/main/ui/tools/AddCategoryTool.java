@@ -7,10 +7,10 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Represents a button that allows User to add a Category into Inventory and show in JList
+
 public class AddCategoryTool extends Tool {
     private Categories cat;
-
-    //Button that allows User to add a Category into Inventory and show in JList
 
     //Constructor:
     public AddCategoryTool(BucketListGraphical frame, JComponent parent) {

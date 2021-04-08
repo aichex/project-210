@@ -6,12 +6,15 @@ import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+// Represents a textField that allows users to input the name of Category to add into Inventory and show in JList
+
 public class CategoryNameTool extends TextField {
+
+    //Constructor:
     public CategoryNameTool(BucketListGraphical frame, JComponent parent) {
         super(frame, parent);
     }
 
-    //TextField that allows users to input the name of Category to add into Inventory and show in JList
 
     // MODIFIES: this
     // EFFECTS: Create a new listener object and adds it to text field
