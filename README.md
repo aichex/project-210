@@ -19,7 +19,6 @@ Users can label each entry:
  * Marking a *to-do* as completed will move entry to **Completed** category.  
 * Mark *to-do* as "Pending" 
 
--- 
 
 ### *Who will use this application?*  
 
@@ -71,3 +70,13 @@ Included a Type Hierarchy in Code:
 * SubClasses for TextField: CategoryNameTool and ToDoNameTool 
 * Methods Override: addListener 
 
+###Phase 4: Task 3  
+* Categories class has multiple methods that contain duplicate code. 
+Creating additional helper methods will decrease coupling.  
+* Cohesion can be increased by further separating JList implementation from the GUI.
+Alternatively, a separate class can be extracted that initializes and customizes JList. 
+Class can then be instantiated in main GUI class. 
+* Inventory class could use a HashMap rather than an Abstract list. This will allows for 
+increase in efficiency, as currently, we have to itterate through entire abstract list to find
+a stored object. HashMap will also prevent duplication of keys, which means users will not be
+able to create duplicate Categories. (Key = Categories, Values = ToDoItem)

@@ -15,7 +15,7 @@ public class MenuBar implements ActionListener {
     JMenuItem menuL;
     JMenuItem menuS;
 
-    //Menubar that allows users to save and load data
+    //MenuBar that allows users to save and load data
 
     //CONSTRUCTOR:
 
