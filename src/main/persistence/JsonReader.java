@@ -90,6 +90,7 @@ public class JsonReader {
             addCategory(i, nextCategory);
         }
     }
+
     //MODIFIES: Inventory
     //EFFECTS: parses category from JSON object and adds it to Inventory
     private void addCategory(Inventory i, JSONObject jsonObject) {
@@ -110,8 +111,6 @@ public class JsonReader {
         addCategories(i, jsonObject);
         return i;
     }
-
-
 
 
 }
