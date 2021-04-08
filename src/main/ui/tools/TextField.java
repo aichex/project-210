@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 
 // Abstract class that creates a TextField that requires a JFrame and Component designation
+//Type Hierarchy taken from krystal-w/To-Do-List (Github)
 
 public abstract class TextField {
     BucketListGraphical frame;

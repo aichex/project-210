@@ -6,6 +6,7 @@ import ui.BucketListGraphical;
 import javax.swing.*;
 
 //Represents an abstract tool that creates a button. Requires a JFrame and JComponent designation
+//Type Hierarchy taken from krystal-w/To-Do-List (Github)
 public abstract class Tool {
     JButton button;
     protected BucketListGraphical frame;
