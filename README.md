@@ -53,15 +53,15 @@ CONSTRAINT: Only one string can be taken for the name.
 9. User Story: Save Completed To-Do list on file 
 10. User Story: Load Completed To-Do list from file 
 
-##Phase 3: 
+## Phase 3: 
 
-###User Stories Implemented in GUI: 
+### User Stories Implemented in GUI: 
 1. User Story: Add a Category into Inventory with a textField and Button
 2. User Story: Add a ToDo Item into Completede Category with textField and Button 
 
-##Phase 4:
+## Phase 4:
 
-###Phase 4: Task 2 
+### Phase 4: Task 2: 
 
 Included a Type Hierarchy in Code:  
 * Abstract Classes: Tool and TextField  
@@ -70,7 +70,7 @@ Included a Type Hierarchy in Code:
 * SubClasses for TextField: CategoryNameTool and ToDoNameTool 
 * Methods Override: addListener 
 
-###Phase 4: Task 3  
+### Phase 4: Task 3:  
 * Categories class has multiple methods that contain duplicate code. 
 Creating additional helper methods will decrease coupling.  
 * Cohesion can be increased by further separating JList implementation from the GUI.
