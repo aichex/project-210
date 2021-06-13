@@ -53,7 +53,7 @@ CONSTRAINT: Only one string can be taken for the name.
 9. User Story: Save Completed To-Do list on file 
 10. User Story: Load Completed To-Do list from file 
 
-## Phase 3: 
+## Phase 3:
 
 ### User Stories Implemented in GUI: 
 1. User Story: Add a Category into Inventory with a textField and Button
